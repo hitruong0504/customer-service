@@ -29,18 +29,32 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public CustomerVM createCustomer(CustomerDTO dto) {
+        if(customerRepository.existsByEmail(dto.getEmail())) {
+            throw new ApiException(CustomerCode.EMAIL_EXISTS);
+        }
         Customer customer = customerMapper.toEntity(dto);
         customer.setCreatedAt(Instant.now());
         customer.setStatus(CustomerStatus.PENDING);
         customer.setRole(CustomerRole.CUSTOMER);
+        customer.setUpdateAt(Instant.now());
         customerRepository.save(customer);
         return customerMapper.toVM(customer);
     }
 
     @Override
-    public CustomerVM getCustomer(Long id) throws BadRequestException {
+    public CustomerVM getCustomer(Long id){
         Customer customer = customerRepository.findById(id)
                 .orElseThrow(() -> new ApiException(CustomerCode.CUSTOMER_NOT_FOUND));
+        return customerMapper.toVM(customer);
+    }
+
+    @Override
+    public CustomerVM updateCustomer(Long id, CustomerDTO dto) {
+        Customer customer = customerRepository.findByEmailAndId(dto.getEmail(), id)
+                .orElseThrow(() -> new ApiException(CustomerCode.CUSTOMER_NOT_FOUND_BY_ID_AND_EMAIL));
+        customer = customerMapper.partialUpdate(dto, customer);
+        customer.setUpdateAt(Instant.now());
+        customerRepository.save(customer);
         return customerMapper.toVM(customer);
     }
 }

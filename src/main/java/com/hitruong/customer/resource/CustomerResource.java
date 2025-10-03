@@ -28,8 +28,17 @@ public class CustomerResource {
     @GetMapping("/{id}")
     public ResponseEntity<CustomerVM> getCustomer(
             @PathVariable Long id
-    ) throws BadRequestException {
+    ){
         CustomerVM customerVM = customerService.getCustomer(id);
+        return ResponseEntity.ok().body(customerVM);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<CustomerVM> updateCustomer(
+            @PathVariable Long id,
+            @Valid @RequestBody CustomerDTO dto
+    ){
+        CustomerVM customerVM = customerService.updateCustomer(id, dto);
         return ResponseEntity.ok().body(customerVM);
     }
 }

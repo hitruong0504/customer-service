@@ -8,5 +8,7 @@ import org.apache.coyote.BadRequestException;
 public interface CustomerService {
     CustomerVM createCustomer(@Valid CustomerDTO dto);
 
-    CustomerVM getCustomer(Long id) throws BadRequestException;
+    CustomerVM getCustomer(Long id);
+
+    CustomerVM updateCustomer(Long id, @Valid CustomerDTO dto);
 }

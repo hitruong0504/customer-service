@@ -17,4 +17,5 @@ public class CustomerVM {
     private CustomerRole role;
     private CustomerStatus status;
     private Instant createdAt;
+    private Instant updateAt;
 }

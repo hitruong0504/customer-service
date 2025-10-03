@@ -26,4 +26,12 @@
             <column name="created_at" type="TIMESTAMP"/>
         </createTable>
     </changeSet>
+
+    <changeSet id="20251003-add-update-at-column" author="anhhitruong">
+        <addColumn tableName="customer">
+            <column name="update_at" type="TIMESTAMP">
+                <constraints nullable="true"></constraints>
+            </column>
+        </addColumn>
+    </changeSet>
 </databaseChangeLog>

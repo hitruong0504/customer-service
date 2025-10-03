@@ -35,4 +35,6 @@ public class Customer {
     private CustomerStatus status;
 
     private Instant createdAt;
+
+    private Instant updateAt;
 }
