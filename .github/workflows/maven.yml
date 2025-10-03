@@ -1,0 +1,28 @@
+name: Maven CI
+
+on:
+  push:
+    branches-ignore:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # B1: checkout code
+      - uses: actions/checkout@v4
+
+      # B2: setup JDK 17
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      # B3: build + test
+      - name: Build with Maven
+        run: mvn -B clean verify
