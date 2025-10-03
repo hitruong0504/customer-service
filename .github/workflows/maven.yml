@@ -26,7 +26,7 @@ jobs:
           cache: 'maven'
 
       - name: Build with Maven
-        run: mvn -B clean verify --no-transfer-progress
+        run: ./mvnw -B clean verify --no-transfer-progress
 
       - name: Publish Test Results
         uses: EnricoMi/publish-unit-test-result-action/linux@v2
