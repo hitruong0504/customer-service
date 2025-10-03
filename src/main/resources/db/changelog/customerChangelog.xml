@@ -7,7 +7,7 @@
 
 
     <!-- Tạo bảng customer -->
-    <changeSet id="customer" author="anhhitruong">
+    <changeSet id="20251003-customer-entity" author="anhhitruong">
         <createTable schemaName="customer" tableName="customer">
             <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
@@ -15,16 +15,15 @@
             <column name="email" type="VARCHAR(255)">
                 <constraints nullable="false" unique="true"/>
             </column>
-            <column name="password_hash" type="VARCHAR(255)">
+            <column name="password" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
             <column name="full_name" type="VARCHAR(255)"/>
             <column name="phone" type="VARCHAR(50)"/>
-            <column name="address" type="JSONB"/>
+            <column name="address" type="VARCHAR(255)"/>
             <column name="role" type="VARCHAR(50)"/>
             <column name="status" type="VARCHAR(50)"/>
             <column name="created_at" type="TIMESTAMP"/>
         </createTable>
     </changeSet>
-
 </databaseChangeLog>
