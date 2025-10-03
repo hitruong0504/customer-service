@@ -9,20 +9,32 @@ on:
       - main
 
 jobs:
-  build:
+  build_and_test:
     runs-on: ubuntu-latest
 
     steps:
-      # B1: checkout code
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      # B2: setup JDK 17
       - name: Set up JDK 17
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v3
         with:
           java-version: '17'
           distribution: 'temurin'
 
-      # B3: build + test
-      - name: Build with Maven
-        run: mvn -B clean verify
+      - name: Cache Maven dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
+      - name: Build project (skip tests)
+        run: mvn clean package -DskipTests --batch-mode
+
+      - name: Run code formatter
+        run: mvn com.coveo:fmt-maven-plugin:format
+
+      - name: Run tests
+        run: mvn test --batch-mode --errors --fail-at-end
