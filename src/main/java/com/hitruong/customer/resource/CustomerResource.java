@@ -26,4 +26,8 @@ public class CustomerResource {
         CustomerVM customerVM = customerService.createCustomer(dto);
         return ResponseEntity.ok().body(customerVM);
     }
+
+    public ResponseEntity<CustomerVM> getCustomer(){
+        return null;
+    }
 }
