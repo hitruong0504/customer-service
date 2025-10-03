@@ -5,10 +5,7 @@ import com.hitruong.customer.domain.vm.CustomerVM;
 import com.hitruong.customer.service.CustomerService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/customer")
@@ -27,7 +24,11 @@ public class CustomerResource {
         return ResponseEntity.ok().body(customerVM);
     }
 
-    public ResponseEntity<CustomerVM> getCustomer(){
-        return null;
+    @GetMapping("/{id}")
+    public ResponseEntity<CustomerVM> getCustomer(
+            @PathVariable Long id
+    ){
+        CustomerVM customerVM = customerService.getCustomer(id);
+        return ResponseEntity.ok().body(customerVM);
     }
 }

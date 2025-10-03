@@ -33,4 +33,10 @@ public class CustomerServiceImpl implements CustomerService {
         customerRepository.save(customer);
         return customerMapper.toVM(customer);
     }
+
+    @Override
+    public CustomerVM getCustomer(Long id) {
+        Customer customer = customerRepository.findById(id).orElse(null);
+        return customerMapper.toVM(customer);
+    }
 }

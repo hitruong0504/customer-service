@@ -6,4 +6,6 @@ import jakarta.validation.Valid;
 
 public interface CustomerService {
     CustomerVM createCustomer(@Valid CustomerDTO dto);
+
+    CustomerVM getCustomer(Long id);
 }
