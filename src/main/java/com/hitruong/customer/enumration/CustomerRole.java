@@ -1,4 +1,4 @@
-package com.hitruong.customer.domain;
+package com.hitruong.customer.enumration;
 
 public enum CustomerRole {
     ADMIN,

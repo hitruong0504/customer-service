@@ -1,7 +1,8 @@
 package com.hitruong.customer.domain.vm;
 
-import com.hitruong.customer.domain.CustomerRole;
-import com.hitruong.customer.domain.CustomerStatus;
+
+import com.hitruong.customer.enumration.CustomerRole;
+import com.hitruong.customer.enumration.CustomerStatus;
 import lombok.Data;
 
 import java.time.Instant;

@@ -4,6 +4,7 @@ import com.hitruong.customer.domain.dto.CustomerDTO;
 import com.hitruong.customer.domain.vm.CustomerVM;
 import com.hitruong.customer.service.CustomerService;
 import jakarta.validation.Valid;
+import org.apache.coyote.BadRequestException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,7 +28,7 @@ public class CustomerResource {
     @GetMapping("/{id}")
     public ResponseEntity<CustomerVM> getCustomer(
             @PathVariable Long id
-    ){
+    ) throws BadRequestException {
         CustomerVM customerVM = customerService.getCustomer(id);
         return ResponseEntity.ok().body(customerVM);
     }

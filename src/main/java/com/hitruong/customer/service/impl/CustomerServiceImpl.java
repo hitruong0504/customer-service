@@ -1,13 +1,16 @@
 package com.hitruong.customer.service.impl;
 
 import com.hitruong.customer.domain.Customer;
-import com.hitruong.customer.domain.CustomerRole;
-import com.hitruong.customer.domain.CustomerStatus;
+import com.hitruong.customer.enumration.CustomerCode;
+import com.hitruong.customer.enumration.CustomerRole;
+import com.hitruong.customer.enumration.CustomerStatus;
 import com.hitruong.customer.domain.dto.CustomerDTO;
 import com.hitruong.customer.domain.mapper.CustomerMapper;
 import com.hitruong.customer.domain.vm.CustomerVM;
+import com.hitruong.customer.exception.ApiException;
 import com.hitruong.customer.repository.CustomerRepository;
 import com.hitruong.customer.service.CustomerService;
+import org.apache.coyote.BadRequestException;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
@@ -35,8 +38,9 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public CustomerVM getCustomer(Long id) {
-        Customer customer = customerRepository.findById(id).orElse(null);
+    public CustomerVM getCustomer(Long id) throws BadRequestException {
+        Customer customer = customerRepository.findById(id)
+                .orElseThrow(() -> new ApiException(CustomerCode.CUSTOMER_NOT_FOUND));
         return customerMapper.toVM(customer);
     }
 }
