@@ -34,4 +34,11 @@
             </column>
         </addColumn>
     </changeSet>
+    <changeSet id="20251003-add-is-deleted-column" author="anhhitruong">
+        <addColumn tableName="customer">
+            <column name="is_deleted" type="BOOLEAN" defaultValue="FALSE">
+                <constraints nullable="true"></constraints>
+            </column>
+        </addColumn>
+    </changeSet>
 </databaseChangeLog>
