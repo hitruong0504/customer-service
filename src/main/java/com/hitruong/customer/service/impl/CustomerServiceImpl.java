@@ -57,4 +57,14 @@ public class CustomerServiceImpl implements CustomerService {
         customerRepository.save(customer);
         return customerMapper.toVM(customer);
     }
+
+    @Override
+    public void deleteCustomer(Long id) {
+        Customer customer = customerRepository.findById(id)
+                .orElseThrow(() -> new ApiException(CustomerCode.CUSTOMER_NOT_FOUND));
+        customer.setStatus(CustomerStatus.DELETED);
+        customer.setIsDeleted(true);
+        customer.setUpdateAt(Instant.now());
+        customerRepository.save(customer);
+    }
 }

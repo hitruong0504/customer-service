@@ -41,4 +41,10 @@ public class CustomerResource {
         CustomerVM customerVM = customerService.updateCustomer(id, dto);
         return ResponseEntity.ok().body(customerVM);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteCustomer(@PathVariable Long id){
+        customerService.deleteCustomer(id);
+        return ResponseEntity.ok().build();
+    }
 }

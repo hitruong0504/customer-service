@@ -11,4 +11,6 @@ public interface CustomerService {
     CustomerVM getCustomer(Long id);
 
     CustomerVM updateCustomer(Long id, @Valid CustomerDTO dto);
+
+    void deleteCustomer(Long id);
 }
