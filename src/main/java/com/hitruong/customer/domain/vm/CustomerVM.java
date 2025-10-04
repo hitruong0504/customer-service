@@ -18,4 +18,5 @@ public class CustomerVM {
     private CustomerStatus status;
     private Instant createdAt;
     private Instant updateAt;
+    private Boolean isDeleted;
 }

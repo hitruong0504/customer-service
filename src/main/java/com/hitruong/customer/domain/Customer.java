@@ -37,4 +37,6 @@ public class Customer {
     private Instant createdAt;
 
     private Instant updateAt;
+
+    private Boolean isDeleted;
 }

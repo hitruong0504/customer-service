@@ -9,4 +9,5 @@ public class CustomerDTO {
     private String phone;
     private String fullName;
     private String address;
+    private Boolean isDeleted = false;
 }
