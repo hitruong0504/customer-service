@@ -13,8 +13,8 @@ spring:
       ddl-auto: none
     properties:
       hibernate:
-        default_schema: customer
+        default_schema: profile
     show-sql: true
   liquibase:
-    default-schema: customer
-    change-log: classpath:/db/changelog/customerChangelog.xml
+    default-schema: profile
+    change-log: classpath:/db/changelog/profileChangelog.xml

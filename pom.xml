@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.hitruong</groupId>
-	<artifactId>customer</artifactId>
+	<artifactId>profile</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>customer</name>
+	<name>profile</name>
 	<description>Customer Service</description>
 	<url/>
 	<licenses>
